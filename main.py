@@ -1,31 +1,47 @@
 # python3
 
 def parallel_processing(n, m, data):
-    output = []
-    # TODO: write the function for simulating parallel tasks, 
-    # create the output pairs
+  step=m.split(" ")
+  tests=[True]*int(n[0])
+  for i in range(len(step)):
+    try:
+      step[i]=int(step[i])
+    except:
+      step.pop(i)
+      
+  output = []
+  for i in range(len(step)):
+    if (True in tests):
+      for j in range(len(data)):
+        if(tests[j]==True):
+          output.append(str(j)+" "+str(data[j]))
+          data[j]=data[j]+step[i]
+          tests[j]=False
+          break
+    else:
+      tests=[True]*int(n[0])
+      for j in range(len(data)):
+        if(tests[j]==True):
+          output.append(str(j)+" "+str(data[j]))
+          data[j]=data[j]+step[i]
+          tests[j]=False
+          break
 
-    return output
+  return output
 
-def main():
-    # TODO: create input from keyboard
-    # input consists of two lines
-    # first line - n and m
-    # n - thread count 
-    # m - job count
-    n = 0
-    m = 0
+  
+def listprint(list):
+  for i in range(len(list)):
+    print(list[i])
 
-    # second line - data 
-    # data - contains m integers t(i) - the times in seconds it takes any thread to process i-th job
-    data = []
-
-    # TODO: create the function
-    result = parallel_processing(n,m,data)
     
-    # TODO: print out the results, each pair in it's own line
-
-
-
+def main():
+  n =str(input("Enter thread count: "))
+  m =str(input("Enter job count: "))
+  data =[0]*int(n[0])
+  
+  result = parallel_processing(n,m,data)
+  listprint(result)
+  
 if __name__ == "__main__":
     main()
