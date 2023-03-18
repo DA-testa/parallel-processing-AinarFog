@@ -36,8 +36,8 @@ def listprint(list):
 
     
 def main():
-  n =str(input("Enter thread count: "))
-  m =str(input("Enter job count: "))
+  n =str(input())
+  m =str(input())
   data =[0]*int(n[0])
   
   result = parallel_processing(n,m,data)
